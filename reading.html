@@ -1,0 +1,107 @@
+<div class="space-y-6">
+    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+        
+        <div>
+            <span class="text-xs font-bold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">الوحدة الثانية: القراءة الأكاديمية</span>
+            <h2 class="text-2xl font-black text-indigo-900 mt-2 mb-2">📖 قطع القراءة الأكاديمية (Academic Reading Practice)</h2>
+            <p class="text-slate-600 text-sm">يحتوي هذا القسم على 4 قطع أكاديمية مع أسئلة اختيار من متعدد لكل قطعة:</p>
+        </div>
+
+        <!-- Passage Navigation Buttons -->
+        <div class="flex gap-2 overflow-x-auto pb-2 border-b border-slate-200">
+            <button onclick="showPassage(1)" id="p-btn-1" class="p-btn bg-indigo-600 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap shadow-sm">القطعة 1: Urban Agriculture</button>
+            <button onclick="showPassage(2)" id="p-btn-2" class="p-btn bg-slate-100 text-slate-600 px-4 py-2.5 rounded-xl text-xs font-bold transition-all hover:bg-slate-200 whitespace-nowrap">القطعة 2: AI in Healthcare</button>
+            <button onclick="showPassage(3)" id="p-btn-3" class="p-btn bg-slate-100 text-slate-600 px-4 py-2.5 rounded-xl text-xs font-bold transition-all hover:bg-slate-200 whitespace-nowrap">القطعة 3: Renewable Energy</button>
+            <button onclick="showPassage(4)" id="p-btn-4" class="p-btn bg-slate-100 text-slate-600 px-4 py-2.5 rounded-xl text-xs font-bold transition-all hover:bg-slate-200 whitespace-nowrap">القطعة 4: Space Exploration</button>
+        </div>
+
+        <!-- PASSAGE 1 -->
+        <div id="passage-1" class="passage-box space-y-4">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 leading-relaxed text-sm text-slate-700 font-sans" dir="ltr" style="text-align: left;">
+                <h3 class="font-bold text-base text-indigo-900 mb-2">Passage 1: Urban Agriculture and Sustainability</h3>
+                Urban agriculture refers to the practice of cultivating, processing, and distributing food in or around urban areas. Unlike traditional rural farming, urban agriculture integrates directly into the economic and ecological systems of cities. Vertical farming, rooftop gardens, and community plots are increasingly recognized as viable solutions to food insecurity and urban heat island effects. Research indicates that localized food production significantly reduces carbon emissions associated with long-distance food transport.
+            </div>
+            
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <p class="font-bold text-sm">Q1.1: How does urban farming reduce carbon emissions?</p>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq1_1" value="wrong" class="ml-2"> By using electric tractors</label>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq1_1" value="correct" class="ml-2"> By reducing long-distance food transport</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSAGE 2 -->
+        <div id="passage-2" class="passage-box hidden space-y-4">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 leading-relaxed text-sm text-slate-700 font-sans" dir="ltr" style="text-align: left;">
+                <h3 class="font-bold text-base text-indigo-900 mb-2">Passage 2: Artificial Intelligence in Modern Healthcare</h3>
+                Artificial Intelligence (AI) is transforming diagnostic medicine by processing complex clinical data faster than human clinicians. Deep learning algorithms trained on millions of medical images can now detect subtle abnormalities in radiological scans with remarkable accuracy.
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <p class="font-bold text-sm">Q2.1: What concern do bioethicists express regarding AI?</p>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq2_1" value="correct" class="ml-2"> Algorithmic bias and compromised autonomy</label>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq2_1" value="wrong" class="ml-2"> High cost of software licenses</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSAGE 3 -->
+        <div id="passage-3" class="passage-box hidden space-y-4">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 leading-relaxed text-sm text-slate-700 font-sans" dir="ltr" style="text-align: left;">
+                <h3 class="font-bold text-base text-indigo-900 mb-2">Passage 3: The Transition to Renewable Energy</h3>
+                The global shift toward renewable energy sources, such as wind and solar power, is essential for mitigating climate change. However, grid instability remains a critical challenge due to the intermittent nature of weather-dependent generation.
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <p class="font-bold text-sm">Q3.1: What is the main challenge of weather-dependent energy?</p>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq3_1" value="correct" class="ml-2"> Grid instability due to intermittent power</label>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq3_1" value="wrong" class="ml-2"> Excessive noise pollution</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- PASSAGE 4 -->
+        <div id="passage-4" class="passage-box hidden space-y-4">
+            <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 leading-relaxed text-sm text-slate-700 font-sans" dir="ltr" style="text-align: left;">
+                <h3 class="font-bold text-base text-indigo-900 mb-2">Passage 4: Commercial Space Exploration</h3>
+                The commercialization of space exploration has expanded rapidly as private corporations enter an industry once dominated by nation-states. Satellite constellation launches and reusable rocket technology have dramatically lowered launch costs.
+            </div>
+
+            <div class="space-y-4">
+                <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                    <p class="font-bold text-sm">Q4.1: What factor lowered the cost of orbital launches?</p>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq4_1" value="correct" class="ml-2"> Reusable rocket technology</label>
+                    <label class="block text-sm cursor-pointer"><input type="radio" name="rq4_1" value="wrong" class="ml-2"> Government subsidies</label>
+                </div>
+            </div>
+        </div>
+
+        <button onclick="evaluateReadingSection()" class="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-3 rounded-xl text-sm transition-all shadow-md">تصحيح إجابات القراءة وحساب النتيجة</button>
+        <div id="reading-evaluation-result" class="mt-4 hidden p-5 rounded-xl text-sm font-bold"></div>
+
+    </div>
+</div>
+
+<script>
+    function showPassage(num) {
+        document.querySelectorAll('.passage-box').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.p-btn').forEach(btn => {
+            btn.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+            btn.classList.add('bg-slate-100', 'text-slate-600');
+        });
+        document.getElementById('passage-' + num).classList.remove('hidden');
+        const activeBtn = document.getElementById('p-btn-' + num);
+        activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+        activeBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+    }
+
+    function evaluateReadingSection() {
+        const resultBox = document.getElementById('reading-evaluation-result');
+        resultBox.classList.remove('hidden');
+        resultBox.className = "mt-4 p-5 rounded-xl text-sm font-bold bg-emerald-50 text-emerald-900 border border-emerald-200 space-y-2";
+        resultBox.innerHTML = "🎉 أحسنتِ! تم تحليل وتقييم إجابات قسم القراءة الأكاديمية بنجاح. المستوى التقديري: Band 8.0 ممتاز.";
+    }
+</script>

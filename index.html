@@ -3,524 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نُقطة | Noqta - مدرب الإيلتس الذكي</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Canvas Confetti Library -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
+    <title>نُقطة | Noqta IELTS Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #4F46E5;
-            --primary-glow: rgba(79, 70, 229, 0.4);
-            --secondary: #10B981;
-            --bg-dark: #090D16;
-            --card-glass: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
-            --text-main: #F8FAFC;
-            --text-muted: #94A3B8;
-            --accent-orange: #F59E0B;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Tajawal', sans-serif;
-            user-select: none;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 24px 16px;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        .glow-bg-1 {
-            position: fixed;
-            top: -100px;
-            right: -100px;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(40px);
-            animation: pulseGlow 8s infinite alternate ease-in-out;
-        }
-
-        .glow-bg-2 {
-            position: fixed;
-            bottom: -100px;
-            left: -100px;
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.2) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(50px);
-        }
-
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 0.8; }
-            100% { transform: scale(1.2); opacity: 1; }
-        }
-
-        .container {
-            width: 100%;
-            max-width: 440px;
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--card-glass);
-            backdrop-filter: blur(16px);
-            padding: 16px 20px;
-            border-radius: 20px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-dot {
-            width: 16px;
-            height: 16px;
-            background: linear-gradient(135deg, #818CF8, var(--primary));
-            border-radius: 50%;
-            box-shadow: 0 0 16px var(--primary);
-            animation: pulseDot 2s infinite;
-        }
-
-        @keyframes pulseDot {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 16px var(--primary); }
-            50% { transform: scale(1.2); box-shadow: 0 0 24px var(--primary); }
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #FFFFFF 30%, #A5B4FC 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .streak-badge {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(245, 158, 11, 0.12);
-            color: var(--accent-orange);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            padding: 8px 14px;
-            border-radius: 24px;
-            font-weight: 800;
-            font-size: 0.95rem;
-        }
-
-        .hero-card {
-            background: var(--card-glass);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--card-border);
-            border-radius: 28px;
-            padding: 28px 24px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero-badge {
-            background: rgba(99, 102, 241, 0.15);
-            color: #A5B4FC;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-bottom: 16px;
-        }
-
-        .skill-name {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: #FFFFFF;
-        }
-
-        .progress-circle-container {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin-bottom: 24px;
-        }
-
-        .progress-circle {
-            transform: rotate(-90deg);
-        }
-
-        .progress-circle circle {
-            fill: none;
-            stroke-width: 10;
-            stroke-linecap: round;
-        }
-
-        .circle-bg {
-            stroke: rgba(255, 255, 255, 0.08);
-        }
-
-        .circle-val {
-            stroke: var(--primary);
-            stroke-dasharray: 377;
-            stroke-dashoffset: 377;
-            transition: stroke-dashoffset 1s ease-in-out;
-            filter: drop-shadow(0 0 8px var(--primary));
-        }
-
-        .circle-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .circle-percentage {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: #FFF;
-        }
-
-        .circle-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #6366F1 0%, #4338CA 100%);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            border-radius: 16px;
-            font-weight: 800;
-            font-size: 1.05rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 8px 25px var(--primary-glow);
-        }
-
-        .btn-primary:active {
-            transform: scale(0.98);
-        }
-
-        /* Modal Lesson */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(9, 13, 22, 0.85);
-            backdrop-filter: blur(12px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: rgba(30, 41, 59, 0.95);
-            border: 1px solid var(--card-border);
-            border-radius: 28px;
-            padding: 26px;
-            width: 100%;
-            max-width: 430px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .close-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: none;
-            color: var(--text-muted);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .lesson-card {
-            background: rgba(15, 23, 42, 0.7);
-            padding: 18px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .speaking-box {
-            background: rgba(15, 23, 42, 0.9);
-            border: 1px solid var(--card-border);
-            border-radius: 18px;
-            padding: 18px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 14px;
-            text-align: center;
-        }
-
-        .mic-btn {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-            border: none;
-            color: white;
-            font-size: 1.6rem;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mic-btn.recording {
-            animation: pulseMic 1.2s infinite;
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.6);
-        }
-
-        @keyframes pulseMic {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.12); }
-            100% { transform: scale(1); }
-        }
-
-        .transcript-result {
-            font-size: 0.9rem;
-            color: #A5B4FC;
-            min-height: 40px;
-            background: rgba(255, 255, 255, 0.04);
-            width: 100%;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-
-        .score-badge {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--secondary);
-            display: none;
-        }
+        body { font-family: 'Tajawal', sans-serif; }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
 
-    <div class="glow-bg-1"></div>
-    <div class="glow-bg-2"></div>
-
-    <div class="container">
-        <!-- Header -->
-        <header>
-            <div class="logo-container">
-                <div class="logo-dot"></div>
-                <div class="logo-text">نُقطة | IELTS Speaking AI</div>
-            </div>
-            <div class="streak-badge">
-                <i class="fa-solid fa-fire"></i>
-                <span id="streak-count">1</span> أيام
-            </div>
-        </header>
-
-        <!-- Hero Card -->
-        <div class="hero-card">
-            <div class="hero-badge">🎙️ تقييم المحادثة بالذكاء الاصطناعي</div>
-            <div class="skill-name">IELTS Speaking Trainer 🇬🇧</div>
-            
-            <div class="progress-circle-container">
-                <svg class="progress-circle" width="140" height="140">
-                    <circle class="circle-bg" cx="70" cy="70" r="60"></circle>
-                    <circle class="circle-val" id="circle-progress" cx="70" cy="70" r="60"></circle>
-                </svg>
-                <div class="circle-text">
-                    <span class="circle-percentage" id="progress-percentage">0%</span>
-                    <span class="circle-label">مكتمل</span>
+    <!-- Header -->
+    <header class="bg-indigo-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <span class="text-3xl">🎯</span>
+                <div>
+                    <h1 class="text-2xl font-black tracking-wider">نُقطة | Noqta IELTS</h1>
+                    <p class="text-xs text-indigo-200">المنصة المتكاملة لإتقان اختبار الإيلتس</p>
                 </div>
             </div>
-
-            <button class="btn-primary" onclick="openLessonModal()">
-                <i class="fa-solid fa-microphone"></i>
-                اختبر نطقك ومحادثتك الآن
-            </button>
-        </div>
-    </div>
-
-    <!-- Speaking Modal -->
-    <div class="modal-overlay" id="lesson-modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>🎙️ التحدث وتقييم النطق (Speaking)</h3>
-                <button class="close-btn" onclick="closeLessonModal()"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-
-            <div class="lesson-card">
-                <div style="font-size: 0.85rem; color: #A5B4FC; font-weight: 800; margin-bottom: 4px;">العبارة الأكاديمية المطلوبة:</div>
-                <p style="font-size: 1.1rem; font-weight: 800; color: #FFF;" id="target-phrase">
-                    "Education is of paramount importance for society."
-                </p>
-                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 6px;">
-                    💡 انطق العبارة أعلاه بوضوح وسيقوم الذكاء الاصطناعي بتقييم صحة نطقك ومستوى طلاقتك!
-                </div>
-            </div>
-
-            <div class="speaking-box">
-                <button class="mic-btn" id="mic-btn" onclick="toggleRecording()">
-                    <i class="fa-solid fa-microphone"></i>
-                </button>
-                <div id="mic-status" style="font-size: 0.85rem; color: var(--text-muted);">اضغط على المايك وابدأ الحديث بالإنجليزية</div>
-
-                <div class="transcript-result" id="transcript-text">الكلام المسجل سيظهر هنا...</div>
-
-                <div class="score-badge" id="score-badge"></div>
+            <div class="bg-indigo-800 border border-indigo-500 px-4 py-2 rounded-xl text-sm font-bold shadow-inner">
+                ⏱️ المؤقت: <span id="timer-display">40:00</span>
             </div>
         </div>
-    </div>
+    </header>
 
+    <!-- Navigation Tabs -->
+    <nav class="bg-white shadow-md border-b border-slate-200">
+        <div class="max-w-6xl mx-auto flex overflow-x-auto">
+            <button onclick="loadSection('grammar', this)" class="tab-btn flex-1 py-4 px-4 text-center font-bold text-indigo-600 border-b-4 border-indigo-600 transition-all whitespace-nowrap">👑 ماستر القواعد والكلمات</button>
+            <button onclick="loadSection('reading', this)" class="tab-btn flex-1 py-4 px-4 text-center font-medium text-slate-500 hover:text-indigo-600 transition-all whitespace-nowrap">📖 القراءة الأكاديمية</button>
+            <button onclick="loadSection('listening', this)" class="tab-btn flex-1 py-4 px-4 text-center font-medium text-slate-500 hover:text-indigo-600 transition-all whitespace-nowrap">🎧 الاستماع</button>
+            <button onclick="loadSection('speaking', this)" class="tab-btn flex-1 py-4 px-4 text-center font-medium text-slate-500 hover:text-indigo-600 transition-all whitespace-nowrap">🗣️ المتحدث الصوتي</button>
+        </div>
+    </nav>
+
+    <!-- Dynamic Content Area -->
+    <main id="content-area" class="max-w-6xl mx-auto p-4 sm:p-6 flex-1 w-full">
+        <!-- سيتم جلب وعرض محتوى القسم هنا تلقائياً -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 text-center py-6 text-slate-500 text-xs mt-auto">
+        تم التطوير بحب لتجاوز اختبار الإيلتس بنجاح 🚀 &copy; 2026 Noqta IELTS Platform
+    </footer>
+
+    <!-- Component Loader & Script Execution Engine -->
     <script>
-        let isRecording = false;
-        let recognition;
-        const targetPhrase = "Education is of paramount importance for society.";
-
-        // Initialize Web Speech API
-        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            recognition = new SpeechRecognition();
-            recognition.lang = 'en-US';
-            recognition.continuous = false;
-            recognition.interimResults = true;
-
-            recognition.onstart = function() {
-                isRecording = true;
-                document.getElementById('mic-btn').classList.add('recording');
-                document.getElementById('mic-status').innerText = '🗣️ جاري الاستماع لنطقك... اتكلم الآن!';
-            };
-
-            recognition.onresult = function(event) {
-                let transcript = '';
-                for (let i = event.resultIndex; i < event.results.length; ++i) {
-                    transcript += event.results[i][0].transcript;
-                }
-                document.getElementById('transcript-text').innerText = transcript;
-                
-                if (event.results[0].isFinal) {
-                    evaluateSpeaking(transcript);
-                }
-            };
-
-            recognition.onerror = function(event) {
-                stopRecording();
-                alert('عذراً، لم نتمكن من التقاط الصوت. تأكد من إعطاء الصلاحية للمايكرفون.');
-            };
-
-            recognition.onend = function() {
-                stopRecording();
-            };
-        } else {
-            alert('متصفحك لا يدعم ميزة التعرف الصوتي المباشر. يفضل استخدام متصفح Google Chrome.');
-        }
-
-        function toggleRecording() {
-            if (!recognition) return;
-            if (isRecording) {
-                recognition.stop();
-            } else {
-                document.getElementById('score-badge').style.display = 'none';
-                document.getElementById('transcript-text').innerText = 'جاري تسجيل صوتك...';
-                recognition.start();
-            }
-        }
-
-        function stopRecording() {
-            isRecording = false;
-            document.getElementById('mic-btn').classList.remove('recording');
-            document.getElementById('mic-status').innerText = 'اضغط على المايك لإعادة المحاولة';
-        }
-
-        // Smart AI Evaluator logic
-        function evaluateSpeaking(userText) {
-            const cleanTarget = targetPhrase.toLowerCase().replace(/[^a-z0-9 ]/g, '');
-            const cleanUser = userText.toLowerCase().replace(/[^a-z0-9 ]/g, '');
-
-            const targetWords = cleanTarget.split(' ');
-            const userWords = cleanUser.split(' ');
-
-            let matchedCount = 0;
-            targetWords.forEach(word => {
-                if (userWords.includes(word)) matchedCount++;
+        async function loadSection(sectionName, clickedBtn) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-b-4', 'border-indigo-600', 'text-indigo-600', 'font-bold');
+                btn.classList.add('text-slate-500', 'font-medium');
             });
+            if(clickedBtn) {
+                clickedBtn.classList.remove('text-slate-500', 'font-medium');
+                clickedBtn.classList.add('border-b-4', 'border-indigo-600', 'text-indigo-600', 'font-bold');
+            }
 
-            const accuracy = Math.round((matchedCount / targetWords.length) * 100);
-            
-            // IELTS Band Estimator
-            let bandScore = "Band 5.5";
-            if (accuracy >= 85) bandScore = "Band 8.0 - 8.5 🌟 (ممتاز جداً)";
-            else if (accuracy >= 70) bandScore = "Band 7.0 - 7.5 ✨ (جيد جداً)";
-            else if (accuracy >= 50) bandScore = "Band 6.0 - 6.5 👍 (مقبول)";
+            const contentArea = document.getElementById('content-area');
+            contentArea.innerHTML = `<div class="text-center py-12 text-slate-400 font-medium animate-pulse">جاري تحميل القسم... ⏳</div>`;
 
-            const scoreBadge = document.getElementById('score-badge');
-            scoreBadge.style.display = 'block';
-            scoreBadge.innerHTML = `النتيجة التقديرية: ${bandScore} <br> (دقة النطق: ${accuracy}%)`;
-
-            if (accuracy >= 70) {
-                if (typeof confetti === 'function') {
-                    confetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } });
-                }
-                document.getElementById('circle-progress').style.strokeDashoffset = '0';
-                document.getElementById('progress-percentage').innerText = '100%';
+            try {
+                const response = await fetch(`components/${sectionName}.html`);
+                if (!response.ok) throw new Error("تعذر تحميل الملف");
+                const htmlText = await response.text();
+                contentArea.innerHTML = htmlText;
+                executeScriptsInElement(contentArea);
+            } catch (error) {
+                contentArea.innerHTML = `
+                    <div class="bg-rose-50 border border-rose-200 p-6 rounded-2xl text-center text-rose-700">
+                        <p class="font-bold mb-1">عذراً، تعذر تحميل القسم components/${sectionName}.html</p>
+                        <p class="text-xs text-rose-500">تأكدي من فتح المجلد الرئيسي في VS Code وتشغيل Live Server.</p>
+                    </div>
+                `;
             }
         }
 
-        function openLessonModal() {
-            document.getElementById('lesson-modal').style.display = 'flex';
+        function executeScriptsInElement(container) {
+            const scripts = container.querySelectorAll("script");
+            scripts.forEach(script => {
+                const newScript = document.createElement("script");
+                newScript.text = script.innerText;
+                document.body.appendChild(newScript);
+                script.remove();
+            });
         }
 
-        function closeLessonModal() {
-            document.getElementById('lesson-modal').style.display = 'none';
-        }
+        let totalSeconds = 2400;
+        setInterval(() => {
+            if(totalSeconds > 0) {
+                totalSeconds--;
+                const m = String(Math.floor(totalSeconds / 60)).padStart(2, '0');
+                const s = String(totalSeconds % 60).padStart(2, '0');
+                const timerEl = document.getElementById('timer-display');
+                if(timerEl) timerEl.textContent = `${m}:${s}`;
+            }
+        }, 1000);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const firstTab = document.querySelector('.tab-btn');
+            loadSection('grammar', firstTab);
+        });
     </script>
 </body>
 </html>
